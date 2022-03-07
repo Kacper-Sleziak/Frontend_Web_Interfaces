@@ -20,7 +20,7 @@
 }
 
 #bg--blur {
-    background-color: rgba(36, 36, 189, 0.349);
+    background-color: rgba(9, 9, 109, 0.349);
     height: 100vh;
     width: 100vw;
     position: absolute;
@@ -41,7 +41,7 @@
 #main--section {
     display: flex;
     height: 26%;
-    width: 28%;
+    width: 26%;
     padding: 15px;
     align-items: center;
     flex-direction: column;
@@ -49,10 +49,10 @@
     margin-right: auto;
     margin-top: 10%;
     outline: outset white 5px;
+    background-color: rgba(0, 0, 0, 0.205);
 }
 
-
-#hero h1{
+#hero h1 {
     font-size: 50px;
     padding-bottom: 7px;
 }
@@ -69,6 +69,6 @@
 }
 
 #main--section:hover {
-    background-color: rgba(0, 0, 0, 0.267);
+    background-color: rgba(0, 0, 0, 0.356);
     transition: 0.3s
 }

@@ -2,10 +2,10 @@
     padding: 0;
     margin: 0;
     border: 0;
+    text-decoration: none;
     box-sizing: border-box;
     color: white;
     font-family: 'Roboto', sans-serif;
-    text-decoration: none;
 }
 
 #bg--img {
@@ -19,7 +19,7 @@
 }
 
 #bg--blur {
-    background-color: rgba(36, 36, 189, 0.562);
+    background-color: rgba(12, 12, 122, 0.651);
     height: 100vh;
     width: 100vw;
     position: absolute;
@@ -38,20 +38,22 @@
 }
 
 #schedule {
-    margin-top: 40px;
-    width: 100%;
-    padding: 80px;
+    margin-top: 60px;
+    width:  86%;
     font-size: 20px;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    border-collapse: collapse;
+    background-color: rgba(0, 0, 0, 0.205);
 }
 
 table, th, td {
     border: 2px solid;
   }
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
 
 th {
     height: 70px;
