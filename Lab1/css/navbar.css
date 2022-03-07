@@ -37,6 +37,11 @@
     margin-bottom: 7px;
 }
 
+#navigation--box li:hover {
+    color:rgba(255, 255, 255, 0.788);
+    transition: 0.2s;
+}
+
 #navigation--box span {
     font-size: 30px;
     margin-bottom: 15px;
