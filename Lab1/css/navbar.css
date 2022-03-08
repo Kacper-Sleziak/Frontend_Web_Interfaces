@@ -66,7 +66,7 @@
 
 #media--box {
     width: 100%;
-    margin-top: 40%;
+    margin-top: 100%;
     padding: 15px;
     display: flex;
     flex-direction: row;
@@ -83,7 +83,8 @@
     border: white 1px outset;
 }
 
-.icon:hover{
+.icon:hover { 
     width: 52%;
-    transition: 0.3s
+    margin: 8px;
+    transition: 0.1s
 }
