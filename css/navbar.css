@@ -35,6 +35,7 @@
 
 #navigation--box li {
     margin-bottom: 7px;
+    transition: 0.2s
 }
 
 #navigation--box li:hover {
@@ -67,24 +68,39 @@
 #media--box {
     width: 100%;
     margin-top: 100%;
-    padding: 15px;
+    padding: 0 15px 0 15px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
 }
 
+#icon--box {
+    width: 80%;
+    display: flex;
+    border-bottom: white 0.5px;
+    border-style: solid;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.single--icon--box {
+    display: inline-block;
+    line-height: normal;
+    vertical-align: middle;
+}
+
 .icon {
-    width: 50%;
+    width: 55%;
     cursor: pointer;
-    margin: 10px;
     border-radius: 100%;
     background-color: white;
     border: white 1px outset;
+    transition: 0.1s
 }
 
 .icon:hover { 
-    width: 52%;
-    margin: 8px;
+    width: 53%;
+    margin: 0px;
     transition: 0.1s
 }

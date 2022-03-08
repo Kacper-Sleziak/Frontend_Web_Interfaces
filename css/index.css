@@ -50,6 +50,7 @@
     margin-top: 10%;
     outline: outset white 5px;
     background-color: rgba(0, 0, 0, 0.205);
+    transition: 0.3s
 }
 
 #hero h1 {
