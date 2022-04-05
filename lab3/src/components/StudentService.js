@@ -3,7 +3,8 @@ const students = [
         id: 1, 
         firstName: "Jan", 
         lastName: "Kowalski", 
-        email: "jkowalski@gmail.com", 
+        email: "jkowalski@gmail.com",
+        subject:"PIW", 
         tags:"PIW", 
         description: "Poszukuje osoby do projektu "
     },
@@ -12,7 +13,8 @@ const students = [
         id: 2, firstName: "Grzegorz", 
         lastName: "Kowalski", 
         email: "gkowalski@gmail.com", 
-        tags:"SO2, Szandała", 
+        subject:"SO2",
+        tags:"Szandała", 
         description: "Poszukuje osoby do projektu "
     },
 
@@ -20,8 +22,9 @@ const students = [
         id: 3, 
         firstName: "Michał", 
         lastName: "Kowalski", 
-        email: "mkowalski@gmail.com", 
-        tags:"RiPO, Serafin", 
+        email: "mkowalski@gmail.com",
+        subject:"RiPO", 
+        tags:"Serafin", 
         description: "Poszukuje osoby do projektu "
     },
 
@@ -29,8 +32,9 @@ const students = [
         id: 4, 
         firstName: "Kacper", 
         lastName: "Kowalski", 
-        email: "kkowalski@gmail.com", 
-        tags:"BD2", 
+        email: "kkowalski@gmail.com",
+        subject:"BD2",  
+        tags:"C#", 
         description: "Poszukuje osoby do projektu "
     },
 
@@ -39,7 +43,8 @@ const students = [
         firstName: "Michał", 
         lastName: "Wiśniewski", 
         email: "wisnia@gmail.com", 
-        tags:"SO2, Szandała", 
+        subject:"SO2",
+        tags:"Szandała", 
         description: "Poszukuje osoby do projektu z SO"
     }
 ];

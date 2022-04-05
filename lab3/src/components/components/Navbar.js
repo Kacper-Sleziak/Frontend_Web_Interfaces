@@ -4,7 +4,9 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import Container from '@material-ui/core/Container'
 import { useState } from "react";
-import { makeStyles } from "@material-ui/styles";
+import { makeStyles, withThemeCreator } from "@material-ui/styles";
+import { Button } from '@material-ui/core';
+import { Link } from "react-router-dom";
 
 function Navbar() {
 
@@ -14,13 +16,11 @@ function Navbar() {
         color: "white",
       },
       
-      toolbar:{
-
-      },
-
       typography: {
         marginRight: "35px",
-      }
+        cursor: "pointer",
+      },
+
     });
 
     const classes = useStyles();
@@ -35,33 +35,28 @@ function Navbar() {
           variant="dense"
           spacing={20}
           >
-            <Typography 
-            variant="h6"
-            className={classes.typography}
-            >
-              Find Collaborator
-            </Typography>
 
-            <Typography 
-            variant="h6"
-            className={classes.typography}
+            <Link to="/"
+            style={{ textDecoration: 'none', color:"white"}}
             >
-              Create Notice
-            </Typography>
+              <Typography 
+              variant="h6"
+              className={classes.typography}
+              >
+                Find Student
+              </Typography>
+            </Link>
 
-            <Typography 
-            variant="h6"
-            className={classes.typography}
+            <Link to="/group"
+            style={{ textDecoration: 'none', color:"white"}}
             >
-              Find Group
-            </Typography>
-
-            <Typography 
-            variant="h6"
-            className={classes.typography}
-            >
-              Create Group
-            </Typography>
+              <Typography 
+              variant="h6"
+              className={classes.typography}
+              >
+                Find Group
+              </Typography>
+            </Link>
         </Toolbar>
       </Container>
       </AppBar>

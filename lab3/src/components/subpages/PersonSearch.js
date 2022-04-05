@@ -7,9 +7,11 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
 import React from 'react';
 import StudentService from "../StudentService";
+import AddNotice from "./AddNotice";
 import {useEffect} from 'react';
 import {useState} from 'react';
 import { makeStyles } from "@material-ui/styles";
+import { Typography } from "@material-ui/core";
 
 
 function PersonSearch() {
@@ -28,9 +30,10 @@ function PersonSearch() {
 
     const [searchText, setSearchText] = useState("")
     
-    useEffect(() => {
-        console.log(StudentService.getStudents());
-    })
+    function rehresh() {
+        setNotices([...StudentService.getStudents()])
+    }
+
     useEffect(() => {
         if (searchText === ""){
             setNotices([...StudentService.getStudents()])
@@ -41,16 +44,14 @@ function PersonSearch() {
 
             for (var i = 0; i < notices.length ; i++) {
                 var notice = notices[i]
-                var firstName = notice.firstName.toLowerCase()
-                var lastName = notice.lastName.toLowerCase()
                 var tags = notice.tags.toLowerCase()
                 var description = notice.description.toLowerCase()
+                var subject = notice.subject.toLowerCase()
                 
                 if(
-                    firstName.includes(searchText) ||
-                    lastName.includes(searchText) ||
                     tags.includes(searchText) ||
-                    description.includes(searchText)
+                    description.includes(searchText) ||
+                    subject.includes(searchText)
                 )
 
                 {
@@ -74,13 +75,22 @@ function PersonSearch() {
         alignItems="center"
 
         >
+            <Grid item
+            style={{marginTop: "20px"}}
+            >
+                <Typography
+                variant="h5"
+                >
+                    Find Student
+                </Typography>
+            </Grid>
             
             <Grid item
             xs ={12} sm={8} md={8}
             style={{ display: "flex", justifyContent: "center", marginBottom: "60px" }}
             >   
                 <TextField
-                label="szukaj"
+                label="search"
                 size="large"
                 variant="standard"  
                 onChange = {(e) => setSearchText(e.target.value)}
@@ -114,6 +124,8 @@ function PersonSearch() {
                 </Grid>
             </Grid>
         </Grid>
+
+        <AddNotice refresh={rehresh}/>
         </>
     );
   }

@@ -6,16 +6,27 @@ import Typography from  '@material-ui/core/Typography';
 import CardActions from '@material-ui/core/CardActions';
 import React from 'react';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import {useState} from 'react';
+import { makeStyles } from "@material-ui/styles";
 
 
 function SingleNotice({notice}) {
+    const useStyles= makeStyles({
+        tags: {
+            marginTop:"19px",
+            border: "2px",
+           },
+          
+        });
+    const classes = useStyles();
+
     return (
-        <Card style={{width: "100%"}}>
+        <Card>
             <CardHeader
             avatar={<AccountCircleIcon 
             />}
             title={notice.firstName + " " + notice.lastName}
-            subheader={"Tags: " + notice.tags}
+            subheader={"Subject: " + notice.subject}
             >
             </CardHeader>
 
@@ -25,6 +36,14 @@ function SingleNotice({notice}) {
                 color="textSecondary"
                 >
                     {notice.description}
+                </Typography>
+
+                <Typography
+                variant="body2"
+                color="textPrimary"
+                className={classes.tags}
+                >
+                    Tags: {notice.tags}
                 </Typography>
             </CardContent>
          </Card>

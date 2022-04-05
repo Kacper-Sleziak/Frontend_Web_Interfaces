@@ -40,19 +40,9 @@ function App() {
                         element={<PersonSearch />} 
                         />
                     <Route
-                        path="/add_notice"
-                        element={<AddNotice />} 
+                        path="/group"
+                        element={<GroupSearch />} 
                         />
-                    {/* <Route
-                        path="/person_search"
-                        element={<PersonSearch />} 
-                        />  */}
-                    {/* <Route
-                        path="/add_group"
-                        element={<AddGroup />} />
-                    <Route
-                        path="/group_search"
-                        element={<GroupSearch />} /> */}
                 </Routes>
             </Router>
         </ThemeProvider>
