@@ -5,15 +5,15 @@ import SingleNotice from "../components/SingleNotice";
 import TextField  from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
-import { Container } from "@material-ui/core";
 import React from 'react';
-import { students } from "../data";
-import { useState, useEffect } from 'react';
+import StudentService from "../StudentService";
+import {useEffect} from 'react';
+import {useState} from 'react';
 import { makeStyles } from "@material-ui/styles";
 
 
 function PersonSearch() {
-    const [notices, setNotices] = useState([]);
+    const [notices, setNotices] = useState([...StudentService.getStudents()]);
 
     const useStyles= makeStyles({
         container: {
@@ -27,21 +27,20 @@ function PersonSearch() {
         });
 
     const [searchText, setSearchText] = useState("")
-
     
-    // Setting notice by searching values
     useEffect(() => {
-        if (searchText === undefined){
-            console.log(students)
-            setNotices(students)
-            console.log(students)
+        console.log(StudentService.getStudents());
+    })
+    useEffect(() => {
+        if (searchText === ""){
+            setNotices([...StudentService.getStudents()])
         }
 
         else {
             const foundNotices = []
 
-            for (var i = 0; i < students.length ; i++) {
-                var notice = students[i]
+            for (var i = 0; i < notices.length ; i++) {
+                var notice = notices[i]
                 var firstName = notice.firstName.toLowerCase()
                 var lastName = notice.lastName.toLowerCase()
                 var tags = notice.tags.toLowerCase()

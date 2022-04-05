@@ -34,7 +34,6 @@ function Navbar() {
           <Toolbar 
           variant="dense"
           spacing={20}
-          onClick = {console.log("xd")}
           >
             <Typography 
             variant="h6"
