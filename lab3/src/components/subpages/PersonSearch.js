@@ -1,56 +1,90 @@
 
 import Navbar from "../components/Navbar";
-import Typography from '@material-ui/core/Typography'
-import Button from '@material-ui/core/Button'
-import Container from '@material-ui/core/Container'
 import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
 import SingleNotice from "../components/SingleNotice";
 import TextField  from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
+import { Container } from "@material-ui/core";
 import React from 'react';
-import { useState } from "react";
+import { students } from "../data";
+import { useState, useEffect } from 'react';
+import { makeStyles } from "@material-ui/styles";
+
 
 function PersonSearch() {
-    const [notices, setNotices] = useState([
-        {id: 1, firstName: "Jan", lastName: "Kowalski", email: "jkowalski@gmail.com", 
-        tags:"PIW", description: "Poszukuje osoby do projektu "},
-        
-        {id: 2, firstName: "Grzegorz", lastName: "Kowalski", email: "gkowalski@gmail.com", 
-        tags:"SO2, Szandała", description: "Poszukuje osoby do projektu "},
+    const [notices, setNotices] = useState([]);
 
-        {id: 3, firstName: "Michał", lastName: "Kowalski", email: "mkowalski@gmail.com", 
-        tags:"RiPO, Serafin", description: "Poszukuje osoby do projektu "},
+    const useStyles= makeStyles({
+        container: {
+            marginTop:"48px",
+            paddingBottom: "60px",
+            width:"90%",
+            background: "#D9D9D9",
+            marginLeft:"auto", 
+            marginRight:"auto",
+           }
+        });
 
-        {id: 4, firstName: "Kacper", lastName: "Kowalski", email: "kkowalski@gmail.com", 
-        tags:"BD2", description: "Poszukuje osoby do projektu "},
-    ]);
+    const [searchText, setSearchText] = useState("")
 
+    
+    // Setting notice by searching values
+    useEffect(() => {
+        if (searchText === undefined){
+            console.log(students)
+            setNotices(students)
+            console.log(students)
+        }
+
+        else {
+            const foundNotices = []
+
+            for (var i = 0; i < students.length ; i++) {
+                var notice = students[i]
+                var firstName = notice.firstName.toLowerCase()
+                var lastName = notice.lastName.toLowerCase()
+                var tags = notice.tags.toLowerCase()
+                var description = notice.description.toLowerCase()
+                
+                if(
+                    firstName.includes(searchText) ||
+                    lastName.includes(searchText) ||
+                    tags.includes(searchText) ||
+                    description.includes(searchText)
+                )
+
+                {
+                    foundNotices.push(notice)
+                }
+            }
+            setNotices(foundNotices)
+        }
+
+    }, [searchText])
+
+    const classes = useStyles();
 
     return (
         <>
         <Navbar/>
+
         <Grid container 
+        className={classes.container}
         direction="column"
         alignItems="center"
-        justifyContent="center"
-        color="primary"
-        borderColor="primary.main"
-        style={{backgroundColor: "#D9D9D9", width:"90%", 
-                marginLeft:"auto", marginRight:"auto", 
-                paddingBottom: "20px"
-            }}
+
         >
+            
             <Grid item
             xs ={12} sm={8} md={8}
             style={{ display: "flex", justifyContent: "center", marginBottom: "60px" }}
             >   
                 <TextField
                 label="szukaj"
-                color="primary"
                 size="large"
-                variant="standard"
+                variant="standard"  
+                onChange = {(e) => setSearchText(e.target.value)}
                 InputProps={{
                     startAdornment: (
                     <InputAdornment position="start">
@@ -66,14 +100,15 @@ function PersonSearch() {
             <Grid item 
             xs ={12} sm={12} md={12}
             maxWidth='lg'
-            style={{marginLeft: "5%", marginRight: "5%"}}
             >
                 <Grid container 
+                direction = "row"
                 maxWidth='lg'
+                minWidth = 'lg'
                 spacing={2}
                 >
-                    {notices.map((notice) => (
-                        <Grid item xs ={12} sm ={6} md={4}>
+                    {notices.map((notice, key) => (
+                        <Grid item xs ={12} sm ={8} md={4}>
                             <SingleNotice notice={notice}/>
                         </Grid>
                     ))}

@@ -10,10 +10,9 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 function SingleNotice({notice}) {
     return (
-        <Card>
+        <Card style={{width: "100%"}}>
             <CardHeader
             avatar={<AccountCircleIcon 
-            color="primary"
             />}
             title={notice.firstName + " " + notice.lastName}
             subheader={"Tags: " + notice.tags}

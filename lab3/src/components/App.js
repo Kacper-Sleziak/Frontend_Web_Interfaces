@@ -5,18 +5,27 @@ import AddNotice from './subpages/AddNotice';
 import AddGroup from './subpages/AddGroup';
 import GroupSearch from './subpages/GroupSearch';
 import './index.css';
-import { ThemeProvider } from '@material-ui/core';
-import { createTheme } from '@material-ui/core/styles';
+import { ThemeProvider, createTheme  } from '@material-ui/core';
+import  red  from '@material-ui/core/colors/red';
 import React from 'react';
 
-const theme = createTheme({    
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: "#D9D9D9",
+            dark: '#002884',
+            contrastText: '#fff',
+        }
+    },
+
     typography: {
         fontFamily: 'Quicksand',
         fontWeightLight: 400,
         fontWeightRegular: 500,
         fontWeightMedium: 600,
         fontWeightBold: 700,
-    },
+    }
+
 });
 
 function App() {
@@ -28,13 +37,16 @@ function App() {
                 <Routes>
                     <Route
                         path="/"
-                        element={<PersonSearch />} />
+                        element={<PersonSearch />} 
+                        />
                     <Route
                         path="/add_notice"
-                        element={<AddNotice />} />
+                        element={<AddNotice />} 
+                        />
                     {/* <Route
                         path="/person_search"
-                        element={<PersonSearch />} /> */}
+                        element={<PersonSearch />} 
+                        />  */}
                     {/* <Route
                         path="/add_group"
                         element={<AddGroup />} />
