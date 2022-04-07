@@ -12,6 +12,7 @@ import {useEffect} from 'react';
 import {useState} from 'react';
 import { makeStyles } from "@material-ui/styles";
 import { Typography } from "@material-ui/core";
+import { Container } from "@material-ui/core";
 
 
 function PersonSearch() {
@@ -21,17 +22,18 @@ function PersonSearch() {
         topContainer: {
             marginTop:"48px",
             paddingBottom: "60px",
-            width:"90%",
+            width:"80%",
             marginLeft:"auto", 
             marginRight:"auto",
+            borderBottom: "1px solid black"
            },
 
         noticesContainer: {
-            marginRight: "50px", 
-            marginLeft: "20px", 
+            width:"90%",
             alignItems: "center",
             borderStyle: "outline",
-            backgroundColor: "red",
+            paddingTop: "20px",
+            borderBottom: "1px solid black"
         }
         });
 
@@ -48,9 +50,10 @@ function PersonSearch() {
 
         else {
             const foundNotices = []
+            const studentNotices = [...StudentService.getStudents()]
 
-            for (var i = 0; i < notices.length ; i++) {
-                var notice = notices[i]
+            for (var i = 0; i < studentNotices.length ; i++) {
+                var notice = studentNotices[i]
                 var tags = notice.tags.toLowerCase()
                 var description = notice.description.toLowerCase()
                 var subject = notice.subject.toLowerCase()
@@ -73,7 +76,9 @@ function PersonSearch() {
     const classes = useStyles();
 
     return (
-        <>
+        <div
+        style={{backgroundColor:"#F9F8F8"}}
+        >
         <Navbar/>
 
         <Grid container 
@@ -114,22 +119,16 @@ function PersonSearch() {
 
         </Grid>
 
-        <Grid container 
-          direction = "row"
-          maxWidth='lg'
-          minWidth = 'lg'
-          spacing={2}
-          classname={classes.noticesContainer}
-          >
-              {notices.map((notice, key) => (
-                  <Grid item xs ={8} sm ={6} md={3}>
-                      <SingleNotice notice={notice}/>
-                  </Grid>
-              ))}
-          </Grid>
+        <Container
+        className={classes.noticesContainer}
+        >
+            {notices.map((notice, key) => (
+                <SingleNotice notice={notice}/>
+                ))}
+          </Container>
 
         <AddNotice refresh={rehresh}/>
-        </>
+        </div>
     );
   }
   

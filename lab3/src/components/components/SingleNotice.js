@@ -12,6 +12,13 @@ import { makeStyles } from "@material-ui/styles";
 
 function SingleNotice({notice}) {
     const useStyles= makeStyles({
+        card: {
+            width: "370px",
+            marginRight: "auto",
+            marginLeft: "auto",
+            marginBottom: "20px",
+            borderRadius: "10%",
+        },
         tags: {
             marginTop:"19px",
             border: "2px",
@@ -21,7 +28,9 @@ function SingleNotice({notice}) {
     const classes = useStyles();
 
     return (
-        <Card>
+        <Card
+        className = {classes.card}
+        >
             <CardHeader
             avatar={<AccountCircleIcon 
             />}
