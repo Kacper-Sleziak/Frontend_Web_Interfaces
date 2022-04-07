@@ -18,14 +18,21 @@ function PersonSearch() {
     const [notices, setNotices] = useState([...StudentService.getStudents()]);
 
     const useStyles= makeStyles({
-        container: {
+        topContainer: {
             marginTop:"48px",
             paddingBottom: "60px",
             width:"90%",
-            background: "#D9D9D9",
             marginLeft:"auto", 
             marginRight:"auto",
-           }
+           },
+
+        noticesContainer: {
+            marginRight: "50px", 
+            marginLeft: "20px", 
+            alignItems: "center",
+            borderStyle: "outline",
+            backgroundColor: "red",
+        }
         });
 
     const [searchText, setSearchText] = useState("")
@@ -49,9 +56,9 @@ function PersonSearch() {
                 var subject = notice.subject.toLowerCase()
                 
                 if(
-                    tags.includes(searchText) ||
-                    description.includes(searchText) ||
-                    subject.includes(searchText)
+                    tags.includes(searchText.toLowerCase()) ||
+                    description.includes(searchText.toLowerCase()) ||
+                    subject.includes(searchText.toLowerCase())
                 )
 
                 {
@@ -70,7 +77,7 @@ function PersonSearch() {
         <Navbar/>
 
         <Grid container 
-        className={classes.container}
+        className={classes.topContainer}
         direction="column"
         alignItems="center"
 
@@ -104,26 +111,22 @@ function PersonSearch() {
                 style ={{marginTop:"30px"}}
                 />
             </Grid>
-            
-            
-            <Grid item 
-            xs ={12} sm={12} md={12}
-            maxWidth='lg'
-            >
-                <Grid container 
-                direction = "row"
-                maxWidth='lg'
-                minWidth = 'lg'
-                spacing={2}
-                >
-                    {notices.map((notice, key) => (
-                        <Grid item xs ={12} sm ={8} md={4}>
-                            <SingleNotice notice={notice}/>
-                        </Grid>
-                    ))}
-                </Grid>
-            </Grid>
+
         </Grid>
+
+        <Grid container 
+          direction = "row"
+          maxWidth='lg'
+          minWidth = 'lg'
+          spacing={2}
+          classname={classes.noticesContainer}
+          >
+              {notices.map((notice, key) => (
+                  <Grid item xs ={8} sm ={6} md={3}>
+                      <SingleNotice notice={notice}/>
+                  </Grid>
+              ))}
+          </Grid>
 
         <AddNotice refresh={rehresh}/>
         </>
@@ -131,5 +134,8 @@ function PersonSearch() {
   }
   
   export default PersonSearch;
+
+
+  
   
 
