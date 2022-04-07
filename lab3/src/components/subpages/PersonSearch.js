@@ -6,8 +6,8 @@ import TextField  from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
 import React from 'react';
-import StudentService from "../StudentService";
-import AddNotice from "./AddNotice";
+import StudentService from "../services/StudentService";
+import AddNotice from "../components/AddNotice";
 import {useEffect} from 'react';
 import {useState} from 'react';
 import { makeStyles } from "@material-ui/styles";
@@ -16,8 +16,12 @@ import { Container } from "@material-ui/core";
 
 
 function PersonSearch() {
-    const [notices, setNotices] = useState([...StudentService.getStudents()]);
 
+    // States
+    const [notices, setNotices] = useState([...StudentService.getStudents()]);
+    const [searchText, setSearchText] = useState("")
+
+    // Styles of page
     const useStyles= makeStyles({
         topContainer: {
             marginTop:"48px",
@@ -50,15 +54,20 @@ function PersonSearch() {
         }
         });
 
-    const [searchText, setSearchText] = useState("")
-    
+    // Styles object 
+    const classes = useStyles();
+
+
+    // refresh notices state after adding new student Notice do StudentService 
     function rehresh() {
-        setNotices([...StudentService.getStudents()])
+        setNotices([...StudentService.getStudents()]);
     }
 
-    useEffect(() => {
+
+    // find notices by text given in text field
+    const searchNotices = () => {
         if (searchText === ""){
-            setNotices([...StudentService.getStudents()])
+            setNotices([...StudentService.getStudents()]);
         }
 
         else {
@@ -70,29 +79,35 @@ function PersonSearch() {
                 var tags = notice.tags.toLowerCase()
                 var description = notice.description.toLowerCase()
                 var subject = notice.subject.toLowerCase()
+
+                const text = searchText.toLowerCase()
                 
                 if(
-                    tags.includes(searchText.toLowerCase()) ||
-                    description.includes(searchText.toLowerCase()) ||
-                    subject.includes(searchText.toLowerCase())
+                    tags.includes(text) || description.includes(text) ||
+                    subject.includes(text)
                 )
 
                 {
-                    foundNotices.push(notice)
+                    foundNotices.push(notice);
                 }
             }
-            setNotices(foundNotices)
+            setNotices(foundNotices);
         }
+    }
 
+    // Search Handler
+    useEffect(() => {
+        searchNotices();
     }, [searchText])
 
+    // Render notices 
     function renderNotices() {
         if (notices.length !=0){
             return(
-            notices.map((notice, key) => (
-                <SingleNotice notice={notice}/>
-                ))
-            )
+                notices.map((notice, key) => (
+                    <SingleNotice notice={notice}/>
+                    ))
+                )
         }
 
         else {
@@ -106,8 +121,6 @@ function PersonSearch() {
             )
         }
     }
-
-    const classes = useStyles();
 
     return (
         <div
@@ -155,9 +168,9 @@ function PersonSearch() {
             style={{marginTop: "20px", fontWeight: "100"}}
             >
                 <Typography
-                variant="h7"
+                variant="h6"
                 >
-                    You can find notices by: tags, subject and description
+                    You can find notices by: tags, subjects and descriptions
                 </Typography>
             </Grid>
 

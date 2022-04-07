@@ -1,18 +1,19 @@
 
-import Navbar from "../components/Navbar";
+import Navbar from "./Navbar";
 import Grid from "@material-ui/core/Grid";
-import SingleNotice from "../components/SingleNotice";
+import SingleNotice from "./SingleNotice";
 import TextField  from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
 import { Button, Container, Typography } from "@material-ui/core";
 import React from 'react';
-import StudentService from "../StudentService";
+import StudentService from "../services/StudentService";
 import { useState, useEffect } from 'react';
 import { makeStyles } from "@material-ui/styles";
 
 function AddNotice(props) {
 
+  // styles
   const useStyles= makeStyles({
     container: {
         marginTop:"48px",
@@ -28,6 +29,7 @@ function AddNotice(props) {
     }
     });
 
+    // States
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [tags, setTags] = useState("");
@@ -35,9 +37,11 @@ function AddNotice(props) {
     const [description, setDescription] = useState("");
     const [subject, setSubject] = useState("");
 
-    function handleSubmit(e) {
+    // Add Notice to array in Student Service
+    const handleSubmit = (e) => {
       if 
       (
+        // Basic text field validation
         firstName !== "" &&
         lastName !== "" &&
         tags !== "" &&
@@ -60,9 +64,15 @@ function AddNotice(props) {
           }
 
           StudentService.addStudent(newNotice);
-          props.refresh()
-
-          setFirstName = "";
+          props.refresh();
+          
+          // clear tex fields
+          setFirstName("");
+          setLastName("");
+          setTags("");
+          setEmail("");
+          setDescription("");
+          setSubject("");
         }
     }
 
@@ -94,6 +104,7 @@ function AddNotice(props) {
         size="large"
         variant="standard" 
         onChange = {(e) => setFirstName(e.target.value)}
+        value={firstName}
         />
       </Grid>
 
@@ -103,6 +114,7 @@ function AddNotice(props) {
         size="large"
         variant="standard"
         onChange = {(e) => setLastName(e.target.value)} 
+        value={lastName}
         />
       </Grid>
 
@@ -112,6 +124,7 @@ function AddNotice(props) {
         size="large"
         variant="standard" 
         onChange = {(e) => setTags(e.target.value)}
+        value={tags}
         />
       </Grid>
 
@@ -120,7 +133,8 @@ function AddNotice(props) {
         label="email"
         size="large"
         variant="standard"
-        onChange = {(e) => setEmail(e.target.value)} 
+        onChange = {(e) => setEmail(e.target.value)}
+        value={email} 
         />
       </Grid>
 
@@ -130,6 +144,7 @@ function AddNotice(props) {
         size="large"
         variant="standard" 
         onChange = {(e) => setDescription(e.target.value)}
+        value={description}
         />
       </Grid>
 
@@ -139,6 +154,7 @@ function AddNotice(props) {
         size="large"
         variant="standard" 
         onChange = {(e) => setSubject(e.target.value)}
+        value={subject}
         />
       </Grid>
 

@@ -1,8 +1,8 @@
 import { BrowserRouter as Router,
         Routes, Route } from 'react-router-dom';
 import PersonSearch from './subpages/PersonSearch';
-import AddNotice from './subpages/AddNotice';
-import AddGroup from './subpages/AddGroup';
+import AddNotice from './components/AddNotice';
+import AddGroup from './components/AddGroup';
 import GroupSearch from './subpages/GroupSearch';
 import './index.css';
 import { ThemeProvider, createTheme  } from '@material-ui/core';
@@ -20,7 +20,7 @@ const theme = createTheme({
 
     typography: {
         fontFamily: 'Quicksand',
-        fontWeightLight: 100,
+        fontWeightLight: 400,
         fontWeightRegular: 500,
         fontWeightMedium: 600,
         fontWeightBold: 700,

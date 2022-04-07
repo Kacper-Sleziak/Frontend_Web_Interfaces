@@ -11,6 +11,8 @@ import { makeStyles } from "@material-ui/styles";
 
 
 function SingleNotice({notice}) {
+
+    // Styles
     const useStyles= makeStyles({
         card: {
             width: "370px",
@@ -25,6 +27,7 @@ function SingleNotice({notice}) {
            },
           
         });
+        
     const classes = useStyles();
 
     return (

@@ -5,12 +5,46 @@ import TextField  from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
 import React, { Component } from "react";
-import StudentService from "../StudentService";
-import AddNotice from "./AddNotice";
+import StudentService from "../services/StudentService";
+import AddNotice from "../components/AddNotice";
 import {useEffect} from 'react';
 import {useState} from 'react';
 import { makeStyles } from "@material-ui/styles";
 import { Typography } from "@material-ui/core";
+
+// Styles of page
+const useStyles= makeStyles({
+  topContainer: {
+      marginTop:"48px",
+      paddingBottom: "60px",
+      width:"80%",
+      marginLeft:"auto", 
+      marginRight:"auto",
+      borderBottom: "1px solid black"
+  },
+
+  noticesContainer: {
+      width:"90%",
+      alignItems: "center",
+      borderStyle: "outline",
+      paddingTop: "20px",
+      borderBottom: "1px solid black"
+  },
+
+  searchingBar: {
+      display: "flex", 
+      justifyContent: "center", 
+      marginTop:"30px"
+  },
+
+  noResultsText: {
+      marginTop:"80px", 
+      marginBottom:"80px", 
+      display:"flex", 
+      justifyContent: "center"
+  }
+  });
+  
 
 export default class GroupSearch extends Component {
 
@@ -22,24 +56,14 @@ export default class GroupSearch extends Component {
         groups: []
       };
     }
-  
+
     render() {
       return (
         <>
         <Navbar/>
 
         <Grid container 
-        direction="column"
-        alignItems="center"
-        style={{
-        marginTop:"48px", 
-        paddingBottom: "60px",
-        width:"90%",
-        background: "#D9D9D9",
-        marginLeft:"auto", 
-        marginRight:"auto",
-        }}
-
+        className={{}}
         >
             <Grid item
             style={{marginTop: "20px"}}
