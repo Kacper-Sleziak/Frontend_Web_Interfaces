@@ -39,16 +39,27 @@ function AddNotice(props) {
 
     // Add Notice to array in Student Service
     const handleSubmit = (e) => {
-      if 
-      (
-        // Basic text field validation
-        firstName !== "" &&
-        lastName !== "" &&
-        tags !== "" &&
-        email !== "" &&
-        description !== "" &&
-        subject !== ""
-      ){
+
+      // Basic text field validation
+      if (firstName===""){
+      }
+
+      else if(lastName==="") {
+      }
+
+      else if(tags==="" || tags.includes(",")){
+      }
+
+      else if(email===""){
+      }
+
+      else if(description===""){
+      }
+
+      else if(subject===""){
+      }
+   
+      else{
         const min = Math.ceil(1000);
         const max = Math.floor(2000);
         var id = Math.floor(Math.random() * (max - min + 1)) + min;
