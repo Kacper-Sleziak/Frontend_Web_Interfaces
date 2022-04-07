@@ -20,7 +20,7 @@ const theme = createTheme({
 
     typography: {
         fontFamily: 'Quicksand',
-        fontWeightLight: 400,
+        fontWeightLight: 100,
         fontWeightRegular: 500,
         fontWeightMedium: 600,
         fontWeightBold: 700,

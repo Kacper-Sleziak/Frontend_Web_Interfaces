@@ -26,7 +26,7 @@ function PersonSearch() {
             marginLeft:"auto", 
             marginRight:"auto",
             borderBottom: "1px solid black"
-           },
+        },
 
         noticesContainer: {
             width:"90%",
@@ -34,6 +34,19 @@ function PersonSearch() {
             borderStyle: "outline",
             paddingTop: "20px",
             borderBottom: "1px solid black"
+        },
+
+        searchingBar: {
+            display: "flex", 
+            justifyContent: "center", 
+            marginTop:"30px"
+        },
+
+        noResultsText: {
+            marginTop:"80px", 
+            marginBottom:"80px", 
+            display:"flex", 
+            justifyContent: "center"
         }
         });
 
@@ -73,6 +86,27 @@ function PersonSearch() {
 
     }, [searchText])
 
+    function renderNotices() {
+        if (notices.length !=0){
+            return(
+            notices.map((notice, key) => (
+                <SingleNotice notice={notice}/>
+                ))
+            )
+        }
+
+        else {
+            return(
+                <Typography 
+                variant="h6"
+                className={classes.noResultsText}
+                >
+                    No results for given parameters.
+                </Typography>
+            )
+        }
+    }
+
     const classes = useStyles();
 
     return (
@@ -96,10 +130,11 @@ function PersonSearch() {
                     Find Student
                 </Typography>
             </Grid>
+
             
             <Grid item
             xs ={12} sm={8} md={8}
-            style={{ display: "flex", justifyContent: "center", marginBottom: "60px" }}
+            className={classes.searchingBar}
             >   
                 <TextField
                 label="search"
@@ -113,8 +148,17 @@ function PersonSearch() {
                     </InputAdornment>
                     )
                 }}
-                style ={{marginTop:"30px"}}
                 />
+            </Grid>
+
+            <Grid item
+            style={{marginTop: "20px", fontWeight: "100"}}
+            >
+                <Typography
+                variant="h7"
+                >
+                    You can find notices by: tags, subject and description
+                </Typography>
             </Grid>
 
         </Grid>
@@ -122,10 +166,8 @@ function PersonSearch() {
         <Container
         className={classes.noticesContainer}
         >
-            {notices.map((notice, key) => (
-                <SingleNotice notice={notice}/>
-                ))}
-          </Container>
+            {renderNotices()}
+        </Container>
 
         <AddNotice refresh={rehresh}/>
         </div>
