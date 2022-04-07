@@ -1,12 +1,9 @@
 import Card from '@material-ui/core/Card'
 import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from  '@material-ui/core/Typography';
-import CardActions from '@material-ui/core/CardActions';
 import React from 'react';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import {useState} from 'react';
 import { makeStyles } from "@material-ui/styles";
 
 
@@ -23,12 +20,33 @@ function SingleNotice({notice}) {
         },
         tags: {
             marginTop:"19px",
-            border: "2px",
+            display: "flex",
            },
-          
-        });
         
+        tag: {
+            marginLeft: "5px",
+            padding: "3px",
+            border: "0.5px solid #f7f7f7",
+            borderRadius: "20px",
+            backgroundColor: "#f7f7f7",
+        }
+        });
+
     const classes = useStyles();
+    
+    const renderTags = (tags) => {
+        var splitedTags = tags.split(" ");
+
+        return(
+            splitedTags.map((tag) =>
+                <div
+                className={classes.tag}
+                >
+                    {tag}
+                </div>
+            )
+        )
+    }
 
     return (
         <Card
@@ -50,13 +68,19 @@ function SingleNotice({notice}) {
                     {notice.description}
                 </Typography>
 
-                <Typography
+                <div
                 variant="body2"
                 color="textPrimary"
                 className={classes.tags}
                 >
-                    Tags: {notice.tags}
-                </Typography>
+                    <div
+                    style={{marginTop: "3px"}}
+                    >
+                    Tags: 
+                    </div> 
+                    
+                    {renderTags(notice.tags)}
+                </div>
             </CardContent>
          </Card>
     );

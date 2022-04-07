@@ -14,7 +14,7 @@ const students = [
         lastName: "Kowalski", 
         email: "gkowalski@gmail.com", 
         subject:"SO2",
-        tags:"Szandała", 
+        tags:"Szandała Bash", 
         description: "Poszukuje osoby do projektu "
     },
 

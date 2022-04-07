@@ -35,7 +35,6 @@ function PersonSearch() {
         noticesContainer: {
             width:"90%",
             alignItems: "center",
-            borderStyle: "outline",
             paddingTop: "20px",
             borderBottom: "1px solid black"
         },
