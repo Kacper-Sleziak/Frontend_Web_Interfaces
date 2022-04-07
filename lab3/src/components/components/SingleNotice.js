@@ -16,24 +16,27 @@ function SingleNotice({notice}) {
             marginRight: "auto",
             marginLeft: "auto",
             marginBottom: "20px",
-            borderRadius: "10%",
+            borderRadius: "4%",
         },
         tags: {
             marginTop:"19px",
             display: "flex",
-           },
-        
+            flexWrap: "wrap",
+            fontFamily: 'Quicksand'
+        },
         tag: {
             marginLeft: "5px",
             padding: "3px",
             border: "0.5px solid #f7f7f7",
             borderRadius: "20px",
             backgroundColor: "#f7f7f7",
+            marginBottom: "3px",
         }
         });
 
     const classes = useStyles();
     
+    // Splitting tags and putting them to div with border 
     const renderTags = (tags) => {
         var splitedTags = tags.split(" ");
 

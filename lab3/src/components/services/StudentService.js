@@ -24,7 +24,7 @@ const students = [
         lastName: "Kowalski", 
         email: "mkowalski@gmail.com",
         subject:"RiPO", 
-        tags:"Serafin", 
+        tags:"Serafin Lorem Lorem Lorem Lorem Lorem Lorem", 
         description: "Poszukuje osoby do projektu która ogarnia openCV, pythona venv itp itd "
     },
 
