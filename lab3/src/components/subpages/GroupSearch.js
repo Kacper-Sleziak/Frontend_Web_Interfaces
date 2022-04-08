@@ -1,4 +1,4 @@
-import Navbar from "../components/Navbar";
+import Nav from "../components/Nav";
 import Grid from "@material-ui/core/Grid";
 import SingleNotice from "../components/SingleNotice";
 import TextField  from "@material-ui/core/TextField";
@@ -60,7 +60,7 @@ export default class GroupSearch extends Component {
     render() {
       return (
         <>
-        <Navbar/>
+        <Nav/>
 
         <Grid container 
         className={{}}

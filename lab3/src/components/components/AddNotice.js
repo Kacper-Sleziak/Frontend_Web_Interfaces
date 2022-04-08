@@ -1,5 +1,5 @@
 
-import Navbar from "./Navbar";
+import Navbar from "./Nav";
 import Grid from "@material-ui/core/Grid";
 import TextField  from "@material-ui/core/TextField";
 import { Button, Typography } from "@material-ui/core";
@@ -7,6 +7,8 @@ import React from 'react';
 import StudentService from "../services/StudentService";
 import { useState} from 'react';
 import { makeStyles } from "@material-ui/styles";
+import 'antd/dist/antd.css';
+import { message,  notification} from 'antd';
 
 function AddNotice(props) {
 
@@ -47,26 +49,57 @@ function AddNotice(props) {
     const [description, setDescription] = useState("");
     const [subject, setSubject] = useState("");
 
+
+    // Notification that show after creating new note
+    const openNotificationSucces = () => {
+      notification['success']({
+        message: 'Succes!',
+        description:
+          'You created new notice. Everybody going to see it on find student place',
+        duration: 0,
+        placement: "bottomRight",
+        duration: 4.5,
+      });
+    };
+
+    // Notification that show after detecting some validation errors
+    const openNotificationError = (fieldName) => {
+      notification['error']({
+        message: fieldName + " error",
+        description:
+          'Field can not be empty!',
+        placement: "bottomRight",
+        duration: 4.5,
+      });
+    };
+
     // Add Notice to array in Student Service
     const handleSubmit = (e) => {
 
       // Basic text field validation
       if (firstName===""){
+  
+        openNotificationError("First name");
       }
 
       else if(lastName==="") {
+        openNotificationError("Last name");
       }
 
       else if(tags==="" || tags.includes(",")){
+        openNotificationError("Tags");
       }
 
       else if(email===""){
+        openNotificationError("Email");
       }
 
       else if(description===""){
+        openNotificationError("Description");
       }
 
       else if(subject===""){
+        openNotificationError("Subject");
       }
    
       else{
@@ -86,6 +119,8 @@ function AddNotice(props) {
 
           StudentService.addStudent(newNotice);
           props.refresh();
+
+          openNotificationSucces();
           
           // clear text fields
           setFirstName("");
@@ -99,6 +134,8 @@ function AddNotice(props) {
 
     const classes = useStyles();
 
+    // Show how tags will look when new notice 
+    // will be created
     const renderTagsVisualisation = () => {
       if (tags.length !== 0){
         var splitedTags = tags.split(" ");
@@ -113,10 +150,8 @@ function AddNotice(props) {
     }
   }
 
-
     return (
       <>
-      <Navbar/>
 
       <Grid container 
       className={classes.container}

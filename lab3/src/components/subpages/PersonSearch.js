@@ -1,5 +1,5 @@
 
-import Navbar from "../components/Navbar";
+import Nav from "../components/Nav";
 import Grid from "@material-ui/core/Grid";
 import SingleNotice from "../components/SingleNotice";
 import TextField  from "@material-ui/core/TextField";
@@ -125,7 +125,7 @@ function PersonSearch() {
         <div
         style={{backgroundColor:"#F9F8F8"}}
         >
-        <Navbar/>
+        <Nav/>
 
         <Grid container 
         className={classes.topContainer}
