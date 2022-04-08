@@ -101,7 +101,7 @@ function PersonSearch() {
 
     // Render notices 
     function renderNotices() {
-        if (notices.length !=0){
+        if (notices.length !==0){
             return(
                 notices.map((notice, key) => (
                     <SingleNotice notice={notice}/>

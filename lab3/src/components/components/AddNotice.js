@@ -1,14 +1,11 @@
 
 import Navbar from "./Navbar";
 import Grid from "@material-ui/core/Grid";
-import SingleNotice from "./SingleNotice";
 import TextField  from "@material-ui/core/TextField";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
-import { Button, Container, Typography } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 import React from 'react';
 import StudentService from "../services/StudentService";
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import { makeStyles } from "@material-ui/styles";
 
 function AddNotice(props) {
@@ -21,11 +18,24 @@ function AddNotice(props) {
         width:"90%",
         marginLeft:"auto", 
         marginRight:"auto",
-       },
-      
+    },  
     header: {
       fontSize: "25px",
       marginTop: "30px"
+    },
+    tag: {
+      marginLeft: "5px",
+      padding: "3px",
+      border: "0.5px solid white",
+      borderRadius: "20px",
+      backgroundColor: "white",
+      marginBottom: "3px",
+    },
+    tagsContainer: {
+      display:"flex", 
+      flexDirection:"row", 
+      width:"200px",
+      flexWrap: "wrap",
     }
     });
 
@@ -77,7 +87,7 @@ function AddNotice(props) {
           StudentService.addStudent(newNotice);
           props.refresh();
           
-          // clear tex fields
+          // clear text fields
           setFirstName("");
           setLastName("");
           setTags("");
@@ -88,6 +98,20 @@ function AddNotice(props) {
     }
 
     const classes = useStyles();
+
+    const renderTagsVisualisation = () => {
+      if (tags.length !== 0){
+        var splitedTags = tags.split(" ");
+        return(
+          splitedTags.map((tag) =>
+              <div
+              className={classes.tag}
+              >
+                {tag}
+              </div>
+        ));
+    }
+  }
 
 
     return (
@@ -131,16 +155,6 @@ function AddNotice(props) {
 
       <Grid item>
         <TextField
-        label="tags"
-        size="large"
-        variant="standard" 
-        onChange = {(e) => setTags(e.target.value)}
-        value={tags}
-        />
-      </Grid>
-
-      <Grid item>
-        <TextField
         label="email"
         size="large"
         variant="standard"
@@ -167,7 +181,23 @@ function AddNotice(props) {
         onChange = {(e) => setSubject(e.target.value)}
         value={subject}
         />
+      </Grid>      
+
+      <Grid item>
+        <TextField
+        label="tags"
+        size="large"
+        variant="standard" 
+        onChange = {(e) => setTags(e.target.value)}
+        value={tags}
+        />
       </Grid>
+
+      <div
+      className={classes.tagsContainer}
+      >
+        {renderTagsVisualisation()}
+      </div>
 
       <Button
       type="submit"

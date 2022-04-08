@@ -1,12 +1,9 @@
 import { BrowserRouter as Router,
         Routes, Route } from 'react-router-dom';
 import PersonSearch from './subpages/PersonSearch';
-import AddNotice from './components/AddNotice';
-import AddGroup from './components/AddGroup';
 import GroupSearch from './subpages/GroupSearch';
 import './index.css';
 import { ThemeProvider, createTheme  } from '@material-ui/core';
-import  red  from '@material-ui/core/colors/red';
 import React from 'react';
 
 const theme = createTheme({
