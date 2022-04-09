@@ -7,61 +7,27 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
 import React from 'react';
 import StudentService from "../services/StudentService";
-import AddNotice from "../components/AddNotice";
+import AddStudentNotice from "../components/AddStudentNotice";
 import {useEffect} from 'react';
 import {useState} from 'react';
-import { makeStyles } from "@material-ui/styles";
 import { Typography } from "@material-ui/core";
 import { Container } from "@material-ui/core";
+import { useStyles } from "../styles/StudentNoticeStyles.js";
 
 
-function PersonSearch() {
+function StudentNoticeSearch() {
 
     // States
     const [notices, setNotices] = useState([...StudentService.getStudents()]);
     const [searchText, setSearchText] = useState("")
 
-    // Styles of page
-    const useStyles= makeStyles({
-        topContainer: {
-            marginTop:"48px",
-            paddingBottom: "60px",
-            width:"80%",
-            marginLeft:"auto", 
-            marginRight:"auto",
-            borderBottom: "1px solid black"
-        },
-
-        noticesContainer: {
-            width:"90%",
-            alignItems: "center",
-            paddingTop: "20px",
-            borderBottom: "1px solid black"
-        },
-
-        searchingBar: {
-            display: "flex", 
-            justifyContent: "center", 
-            marginTop:"30px"
-        },
-
-        noResultsText: {
-            marginTop:"80px", 
-            marginBottom:"80px", 
-            display:"flex", 
-            justifyContent: "center"
-        }
-        });
-
     // Styles object 
     const classes = useStyles();
-
 
     // refresh notices state after adding new student Notice do StudentService 
     function rehresh() {
         setNotices([...StudentService.getStudents()]);
     }
-
 
     // find notices by text given in text field
     const searchNotices = () => {
@@ -181,12 +147,12 @@ function PersonSearch() {
             {renderNotices()}
         </Container>
 
-        <AddNotice refresh={rehresh}/>
+        <AddStudentNotice refresh={rehresh}/>
         </div>
     );
   }
   
-  export default PersonSearch;
+  export default StudentNoticeSearch;
 
 
   

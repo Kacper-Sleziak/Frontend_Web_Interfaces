@@ -8,9 +8,9 @@ import StudentService from "../services/StudentService";
 import { useState} from 'react';
 import { makeStyles } from "@material-ui/styles";
 import 'antd/dist/antd.css';
-import { message,  notification} from 'antd';
+import { notification} from 'antd';
 
-function AddNotice(props) {
+function AddStudentNotice(props) {
 
   // styles
   const useStyles= makeStyles({
@@ -86,14 +86,10 @@ function AddNotice(props) {
         openNotificationError("Last name");
       }
 
-      else if(tags==="" || tags.includes(",")){
-        openNotificationError("Tags");
-      }
-
       else if(email===""){
         openNotificationError("Email");
       }
-
+      
       else if(description===""){
         openNotificationError("Description");
       }
@@ -102,6 +98,11 @@ function AddNotice(props) {
         openNotificationError("Subject");
       }
    
+      else if(tags==="" || tags.includes(",")){
+        openNotificationError("Tags");
+      }
+
+
       else{
         const min = Math.ceil(1000);
         const max = Math.floor(2000);
@@ -248,5 +249,5 @@ function AddNotice(props) {
     );
   }
   
-  export default AddNotice;
+  export default AddStudentNotice;
   
