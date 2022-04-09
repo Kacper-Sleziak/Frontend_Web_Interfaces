@@ -1,6 +1,6 @@
 import { BrowserRouter as Router,
         Routes, Route } from 'react-router-dom';
-import StudentNoticeSearch from './subpages/StudentNoticeSearch';
+import StudentSearch from './subpages/StudentSearch';
 import GroupSearch from './subpages/GroupSearch';
 import './index.css';
 import { ThemeProvider, createTheme  } from '@material-ui/core';
@@ -34,7 +34,7 @@ function App() {
                 <Routes>
                     <Route
                         path="/"
-                        element={<StudentNoticeSearch />} 
+                        element={<StudentSearch />} 
                         />
                     <Route
                         path="/group"

@@ -4,36 +4,12 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from  '@material-ui/core/Typography';
 import React from 'react';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
-import { makeStyles } from "@material-ui/styles";
+import { useStyles } from "../styles/SingleNoticeStyles";
 
 
 function SingleNotice({notice}) {
 
-    // Styles
-    const useStyles= makeStyles({
-        card: {
-            width: "370px",
-            marginRight: "auto",
-            marginLeft: "auto",
-            marginBottom: "20px",
-            borderRadius: "4%",
-        },
-        tags: {
-            marginTop:"19px",
-            display: "flex",
-            flexWrap: "wrap",
-            fontFamily: 'Quicksand'
-        },
-        tag: {
-            marginLeft: "5px",
-            padding: "3px",
-            border: "0.5px solid #f7f7f7",
-            borderRadius: "20px",
-            backgroundColor: "#f7f7f7",
-            marginBottom: "3px",
-        }
-        });
-
+    // Styles variable
     const classes = useStyles();
     
     // Splitting tags and putting them to div with border 
@@ -56,8 +32,7 @@ function SingleNotice({notice}) {
         className = {classes.card}
         >
             <CardHeader
-            avatar={<AccountCircleIcon 
-            />}
+            avatar={<AccountCircleIcon />}
             title={notice.firstName + " " + notice.lastName}
             subheader={"Subject: " + notice.subject}
             >

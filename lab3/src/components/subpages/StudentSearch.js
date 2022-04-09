@@ -8,14 +8,14 @@ import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
 import React from 'react';
 import StudentService from "../services/StudentService";
 import AddStudentNotice from "../components/AddStudentNotice";
-import {useEffect} from 'react';
-import {useState} from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
 import { Typography } from "@material-ui/core";
 import { Container } from "@material-ui/core";
-import { useStyles } from "../styles/StudentNoticeStyles.js";
+import { useStyles } from "../styles/NoticeStyles.js";
 
 
-function StudentNoticeSearch() {
+function StudentSearch() {
 
     // States
     const [notices, setNotices] = useState([...StudentService.getStudents()]);
@@ -66,7 +66,7 @@ function StudentNoticeSearch() {
     }, [searchText])
 
     // Render notices 
-    function renderNotices() {
+    const renderNotices = () => {
         if (notices.length !==0){
             return(
                 notices.map((notice, key) => (
@@ -74,7 +74,6 @@ function StudentNoticeSearch() {
                     ))
                 )
         }
-
         else {
             return(
                 <Typography 
@@ -86,7 +85,7 @@ function StudentNoticeSearch() {
             )
         }
     }
-
+    
     return (
         <div
         style={{backgroundColor:"#F9F8F8"}}
@@ -97,7 +96,6 @@ function StudentNoticeSearch() {
         className={classes.topContainer}
         direction="column"
         alignItems="center"
-
         >
             <Grid item
             style={{marginTop: "20px"}}
@@ -109,7 +107,6 @@ function StudentNoticeSearch() {
                 </Typography>
             </Grid>
 
-            
             <Grid item
             xs ={12} sm={8} md={8}
             className={classes.searchingBar}
@@ -138,7 +135,6 @@ function StudentNoticeSearch() {
                     You can find notices by: tags, subjects and descriptions
                 </Typography>
             </Grid>
-
         </Grid>
 
         <Container
@@ -152,7 +148,7 @@ function StudentNoticeSearch() {
     );
   }
   
-  export default StudentNoticeSearch;
+  export default StudentSearch;
 
 
   
