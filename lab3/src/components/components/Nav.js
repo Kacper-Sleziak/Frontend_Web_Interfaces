@@ -3,24 +3,12 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import Container from '@material-ui/core/Container'
-import { makeStyles } from "@material-ui/styles";
 import { Link } from "react-router-dom";
+import { useStyles } from "../styles/NavStyles";
 
 function Nav() {
 
-    const useStyles= makeStyles({
-      appbar: {
-        background: "#121212",
-      },
-      
-      typography: {
-        color: "white",
-        marginRight: "35px",
-        cursor: "pointer",
-      },
-
-    });
-
+    // Styles variable
     const classes = useStyles();
     
     return (
@@ -35,7 +23,7 @@ function Nav() {
           >
 
             <Link to="/"
-            style={{ textDecoration: 'none', color:"white"}}
+            className={classes.link}
             >
               <Typography 
               variant="h6"
@@ -46,7 +34,7 @@ function Nav() {
             </Link>
 
             <Link to="/group"
-            style={{ textDecoration: 'none', color:"white"}}
+            className={classes.link}
             >
               <Typography 
               variant="h6"
