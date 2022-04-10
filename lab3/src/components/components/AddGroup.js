@@ -4,7 +4,7 @@ import { Button, Typography } from "@material-ui/core";
 import React from 'react';
 import GroupService from "../services/GroupService";
 import { useState} from 'react';
-import { useStyles } from "../styles/AddStudentStyle";
+import { useStyles } from "../styles/AddNoticeStyle";
 import 'antd/dist/antd.css';
 import { notification} from 'antd';
 
