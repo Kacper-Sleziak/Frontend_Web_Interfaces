@@ -11,6 +11,7 @@ import { Container } from "@material-ui/core";
 import PropTypes from 'prop-types';
 import GroupService from "../services/GroupService";
 import styles from "../styles/GroupNoticeStyles";
+import AddGroup from "../components/AddGroup"
 
 class GroupSearch extends Component {
 
@@ -26,6 +27,12 @@ class GroupSearch extends Component {
     componentDidMount() {
         this.setState({groups: GroupService.getGroups()})
     }
+
+    // refresh notices state after adding new student Notice do StudentService 
+    refresh = () => {
+        this.searchNotices();
+    }
+    
 
     componentDidUpdate(prevProps, prevState) {
         if(this.state.searchText !== prevState.searchText) {
@@ -135,6 +142,8 @@ class GroupSearch extends Component {
         >
             {this.renderNotices()}
         </Container>
+
+        <AddGroup refresh={this.refresh}/>
         </div>
       )
     }

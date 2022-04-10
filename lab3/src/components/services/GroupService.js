@@ -27,6 +27,10 @@ const StudentService = {
 
     addGroup: (group) => {
         groups.push(group);
+    },
+
+    addParticipant: (id, participant) => {
+
     }
 }
 

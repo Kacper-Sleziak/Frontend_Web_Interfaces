@@ -25,8 +25,9 @@ function StudentSearch() {
     const classes = useStyles();
 
     // refresh notices state after adding new student Notice do StudentService 
+    // function consider actual search text
     function rehresh() {
-        setNotices([...StudentService.getStudents()]);
+        searchNotices();
     }
 
     // find notices by text given in text field
