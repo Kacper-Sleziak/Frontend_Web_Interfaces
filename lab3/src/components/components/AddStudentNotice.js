@@ -6,40 +6,11 @@ import { Button, Typography } from "@material-ui/core";
 import React from 'react';
 import StudentService from "../services/StudentService";
 import { useState} from 'react';
-import { makeStyles } from "@material-ui/styles";
+import { useStyles } from "../styles/AddStudentStyle";
 import 'antd/dist/antd.css';
 import { notification} from 'antd';
 
 function AddStudentNotice(props) {
-
-  // styles
-  const useStyles= makeStyles({
-    container: {
-        marginTop:"48px",
-        paddingBottom: "60px",
-        width:"90%",
-        marginLeft:"auto", 
-        marginRight:"auto",
-    },  
-    header: {
-      fontSize: "25px",
-      marginTop: "30px"
-    },
-    tag: {
-      marginLeft: "5px",
-      padding: "3px",
-      border: "0.5px solid white",
-      borderRadius: "20px",
-      backgroundColor: "white",
-      marginBottom: "3px",
-    },
-    tagsContainer: {
-      display:"flex", 
-      flexDirection:"row", 
-      width:"200px",
-      flexWrap: "wrap",
-    }
-    });
 
     // States
     const [firstName, setFirstName] = useState("");
