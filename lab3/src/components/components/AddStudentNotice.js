@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import TextField  from "@material-ui/core/TextField";
 import { Button, Typography } from "@material-ui/core";
 import React from 'react';
-import StudentService from "../services/StudentService";
+import { addStudent } from "../services/StudentService";
 import { useState} from 'react';
 import { useStyles } from "../styles/AddNoticeStyle";
 import 'antd/dist/antd.css';
@@ -80,16 +80,16 @@ function AddStudentNotice(props) {
         var id = Math.floor(Math.random() * (max - min + 1)) + min;
         
         const newNotice = {
-          id: id, 
-          firstName: firstName, 
-          lastName: lastName,
-          email: email,
-          subject, 
-          tags: tags, 
-          description: description
+          "id": id, 
+          "firstName": firstName, 
+          "lastName": lastName,
+          "email": email,
+          "subject": subject, 
+          "tags": tags, 
+          "description": description
           }
 
-          StudentService.addStudent(newNotice);
+          addStudent(Student)
           props.refresh();
 
           openNotificationSucces();
