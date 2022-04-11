@@ -6,7 +6,7 @@ import TextField  from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
 import React from 'react';
-import StudentService from "../services/StudentService";
+import { getStudents } from "../services/StudentService";
 import AddStudentNotice from "../components/AddStudentNotice";
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -18,27 +18,35 @@ import { useStyles } from "../styles/NoticeStyles.js";
 function StudentSearch() {
 
     // States
-    const [notices, setNotices] = useState([...StudentService.getStudents()]);
+    const [notices, setNotices] = useState([]);
     const [searchText, setSearchText] = useState("")
 
     // Styles object 
     const classes = useStyles();
 
+    // Add student notices to state
+    // call back functio
+
+    function addStudent(notice) {
+        var noticesArray = [...notices, notice]
+        setNotices(noticesArray);
+    }
+
     // refresh notices state after adding new student Notice do StudentService 
     // function consider actual search text
     function rehresh() {
-        searchNotices();
+    
     }
 
     // find notices by text given in text field
     const searchNotices = () => {
         if (searchText === ""){
-            setNotices([...StudentService.getStudents()]);
+            getStudents().then(data => setNotices(data));
         }
 
         else {
             const foundNotices = []
-            const studentNotices = [...StudentService.getStudents()]
+            const studentNotices = notices;
 
             for (var i = 0; i < studentNotices.length ; i++) {
                 var notice = studentNotices[i]
@@ -144,7 +152,10 @@ function StudentSearch() {
             {renderNotices()}
         </Container>
 
-        <AddStudentNotice refresh={rehresh}/>
+        <AddStudentNotice 
+        refresh={rehresh}
+        addStudent={addStudent}
+        />
         </div>
     );
   }

@@ -80,16 +80,17 @@ function AddStudentNotice(props) {
         var id = Math.floor(Math.random() * (max - min + 1)) + min;
         
         const newNotice = {
-          "id": id, 
-          "firstName": firstName, 
-          "lastName": lastName,
-          "email": email,
-          "subject": subject, 
-          "tags": tags, 
-          "description": description
+          id: id, 
+          firstName: firstName, 
+          lastName: lastName,
+          email: email,
+          subject: subject, 
+          tags: tags, 
+          description: description
           }
 
-          addStudent(Student)
+    
+          props.addStudent(newNotice);
           props.refresh();
 
           openNotificationSucces();
